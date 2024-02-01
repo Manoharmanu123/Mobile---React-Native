@@ -1,0 +1,21 @@
+import React, { useState } from 'react';
+import { View, TextInput, Button } from 'react-native';
+
+const ChatScreen = () => {
+  const [message, setMessage] = useState('');
+
+  const sendMessage = () => {
+    // Send message to server using a Socket.io client library
+    socket.emit('chat message', message);
+    setMessage('');
+  };
+
+  return (
+    <View>
+      <TextInput onChangeText={setMessage} value={message} />
+      <Button title="Send" onPress={sendMessage} />
+    </View>
+  );
+};
+
+export default ChatScreen;
